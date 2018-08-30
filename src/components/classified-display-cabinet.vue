@@ -30,7 +30,7 @@
     width: 234px;height: 300px;
     background-color: #3a8ee6;
     margin-right: 14px;
-    background-image: url("https://i1.mifile.cn/a4/xmad_15232433421155_vCzhJ.jpg");
+    /*background-image: url("https://i1.mifile.cn/a4/xmad_15232433421155_vCzhJ.jpg");*/
     background-size: cover;
 
     transition-property: all;
@@ -86,41 +86,47 @@
     <div class="margin">
       <!--box-hd-->
       <div class="box-hd">
-        <h2 style="line-height: 58px">家电</h2>
+        <h2 style="line-height: 58px">{{largeclass}}</h2>
         <ul class="nav">
-          <li>热门</li>
-          <li>黄山毛峰</li>
-          <li>祁门红茶</li>
-          <li>铁观音</li>
+          <li v-for="(navSmallclass,index) of navSmallclasses">{{navSmallclass}}</li>
         </ul>
       </div>
       <!--box-bd-->
       <div class="box-bd">
         <ul class="box-bd-l">
-          <li></li>
-          <li></li>
+          <li :style='{
+            "background-image": "url("+url+commodityDisplayCabinetPoster[0]+")",
+            }'>
+          </li>
+          <li :style='{
+            "background-image": "url("+url+commodityDisplayCabinetPoster[1]+")",
+            }'>
+          </li>
         </ul>
         <ul class="box-bd-r">
-          <li v-for="(item,index) of msg" style="overflow: hidden">
-            <div class="saleoff" style="text-align: center;color: white;margin-bottom: 16px">减300元</div>
+          <li v-for="(teaDetail,index) of teaDetailsHandle" style="overflow: hidden">
+            <div class="saleoff" style="text-align: center;color: white;margin-bottom: 16px">{{teaDetail.saleoff}}</div>
             <div
               class="figure"
-              style="background-image: url('https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg');background-size: cover;margin-bottom: 10px">
-
+              :style='{
+            "background-image": "url("+url+teaDetail.figureImg+")",
+            "background-size": "cover",
+            "margin-bottom": "10px"
+            }'>
             </div>
-            <p>小米电视4A 43寸青春版</p>
-            <div class="desc" style="font-size: 12px;color: #b0b0b0;margin-bottom: 14px">全高清屏/人工智能语音</div>
+            <p>{{teaDetail.title}}</p>
+            <div class="desc" style="font-size: 12px;color: #b0b0b0;margin-bottom: 14px">{{teaDetail.desc}}</div>
             <p>
-              <span style="color: #ff6700">1399元</span>
-              <span style="color: #b0b0b0">1699元</span>
+              <span style="color: #ff6700">￥{{teaDetail.price}}</span>
+              <span style="color: #b0b0b0;text-decoration: line-through">￥{{teaDetail.nodiscountprice}}</span>
             </p>
 
             <div
               class="review-wrapper"
               style="height: 0;width: 234px">
               <div style="width: 174px;height: 59px;background-color: #ff6700;display: flex;flex-direction: column;padding: 8px 30px 8px 30px;">
-                <span class="review" style="color: #fff;font-size: 12px">我不是来评价电视的我是来拉仇恨的，38.46的电视请...</span>
-                <span class="author" style="color: rgba(255,255,255,0.6);font-size: 12px"> 来自于 果然发烧 的评价 </span>
+                <span class="review" style="color: #fff;font-size: 12px">{{comment[index].review}}</span>
+                <span class="author" style="color: rgba(255,255,255,0.6);font-size: 12px;">{{$t("classified.display.cabinet.from",{name:comment[index].author})}}</span>
               </div>
             </div>
           </li>
@@ -130,15 +136,56 @@
   </div>
 </template>
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     data(){
       return {
-        msg:Array(8)
+        url:this.dataReqUrl
       }
     },
-    props:["teaDetails"],
+    props:["teaDetails","largeclass","navSmallclasses","comment","commodityDisplayCabinetPoster"],
+    computed:{
+      teaDetailsHandle(){
+
+        if (this.langCode == "zh"){
+          let teaDetailsHandleArr = []
+          console.log(123,this.teaDetails)
+          for(let i=0;i<this.teaDetails.length;i++){
+            teaDetailsHandleArr.push({
+              "largeclass": this.teaDetails[i].zh_largeclass,
+              "smallclass":this.teaDetails[i].zh_smallclass,
+              "title":this.teaDetails[i].zh_title,
+              "desc":this.teaDetails[i].zh_desc,
+              "saleoff":this.teaDetails[i].zh_saleoff,
+              "price":this.teaDetails[i].price,
+              "nodiscountprice":this.teaDetails[i].nodiscountprice,
+              "comprehensive":this.teaDetails[i].comprehensive,
+              "figureImg":this.teaDetails[i].figureImg
+            })
+          }
+          console.log(456)
+          return teaDetailsHandleArr
+        } else {
+          let teaDetailsHandleArr = []
+          for(let i=0;i<this.teaDetails.length;i++){
+            teaDetailsHandleArr.push({
+              "largeclass": this.teaDetails[i].en_largeclass,
+              "smallclass":this.teaDetails[i].en_smallclass,
+              "title":this.teaDetails[i].en_title,
+              "desc":this.teaDetails[i].en_desc,
+              "saleoff":this.teaDetails[i].en_saleoff,
+              "price":this.teaDetails[i].price,
+              "nodiscountprice":this.teaDetails[i].nodiscountprice,
+              "comprehensive":this.teaDetails[i].comprehensive,
+              "figureImg":this.teaDetails[i].figureImg
+            })
+          }
+          return teaDetailsHandleArr
+        }
+      },
+      ...mapGetters(["langCode"])
+    },
     mounted(){
-      console.log(this.teaDetails)
     }
   }
 </script>

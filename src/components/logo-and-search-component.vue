@@ -11,7 +11,7 @@
   }
   .logo-and-search-component>.margin>.search>form>input:nth-child(2){
     background-image: url("./../assets/images/icon-search.png");
-    width: 56px;height: 37.6px;
+    width: 56px;height: 38px;
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #e0e0e0;
@@ -27,7 +27,7 @@
 <template>
   <div class="logo-and-search-component">
     <div class="margin">
-      <img src="./../assets/images/logo.gif" alt="" class="logo" @click="goHome">
+      <img src="./../assets/images/logo.png" style="height: 80px" alt="" class="logo" @click="goHome">
       <div class="search">
         <form action="">
           <input type="text" ref="searchTxt" class="searchTxt" @blur="txtBlur()" @focus="txtFocus()">

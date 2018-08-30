@@ -7,5 +7,6 @@
   "header.component.help": "帮助中心",
   "header.component.about": "关于遇茶",
   "header.component.cart": "购物车",
-  "category.list.all.product.categories": "所有商品分类"
+  "category.list.all.product.categories": "所有商品分类",
+  "classified.display.cabinet.from": "来自于 {name} 的评论"
 }

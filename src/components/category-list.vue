@@ -74,6 +74,7 @@
 <script>
   import axios from 'axios'
   import {mapGetters} from 'vuex'
+  import AllTypesOfTea from './../service/all-types-of-tea'
   export default {
     data(){
       return{
@@ -91,18 +92,10 @@
     },
     mounted(){
       let _this = this
-      axios.get(_this.dataReqUrl+'/allTypesOfTea')
-      .then(function (response) {
-        for (let i=0;i<response.data.length;i++){
-          _this.virtualDatas.push({
-            "largeclass":response.data[i][_this.langCode+"_largeclass"],
-            "smallclass":response.data[i][_this.langCode+"_smallclass"]
-          })
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      AllTypesOfTea.getAllTypesOfTea(this)
+        .then(res=>{
+          _this.virtualDatas = res
+        })
     },
     methods:{
       triggerActiveLargeclass(index){

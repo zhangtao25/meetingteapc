@@ -7,5 +7,6 @@
   "header.component.help": "Help",
   "header.component.about": "About Meeting Tea",
   "header.component.cart": "Shopping Cart",
-  "category.list.all.product.categories": "All Product Categories"
+  "category.list.all.product.categories": "All Product Categories",
+  "classified.display.cabinet.from": "from {name} comment"
 }
