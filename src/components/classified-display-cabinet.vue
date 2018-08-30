@@ -32,6 +32,7 @@
     margin-right: 14px;
     /*background-image: url("https://i1.mifile.cn/a4/xmad_15232433421155_vCzhJ.jpg");*/
     background-size: cover;
+    background-position: center;
 
     transition-property: all;
     transition-duration: 0.2s;
