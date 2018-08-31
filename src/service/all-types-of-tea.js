@@ -2,7 +2,7 @@ import axios from 'axios'
 
 function getAllTypesOfTea(_this) {
   return new Promise((resolve, reject) => {
-    axios.get("/static/allTypesOfTea.json")
+    axios.get("/static/json/allTypesOfTea.json")
       .then(res => {
         let virtualDatas = []
         for (let i=0;i<res.data.length;i++){

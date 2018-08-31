@@ -4,6 +4,7 @@
     <logo-and-search-component></logo-and-search-component>
     <category-list></category-list>
     <banner-component></banner-component>
+    <four-small-banners></four-small-banners>
     <classified-display-cabinet
       :tea-details="testTeaDetails"
       :largeclass="'绿茶'"
@@ -11,10 +12,12 @@
       :comment="comment"
       :commodityDisplayCabinetPoster="[
       '/images/commodityDisplayCabinetPoster/GreenTea/0.jpg',
-      '/images/commodityDisplayCabinetPoster/GreenTea/1.jpg'
+      '/images/commodityDisplayCabinetPoster/GreenTea/1.jpg',
+      '/images/commodityDisplayCabinetPoster/GreenTea/2.jpg'
       ]"
     >
     </classified-display-cabinet>
+
   </div>
 </template>
 <script>
@@ -23,6 +26,7 @@
   import CategoryList from "./../components/category-list"
   import BannerComponent from "./../components/banner-component"
   import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
+  import FourSmallBanners from "./../components/four-small-banners"
   import AllTeaDetails from "../service/all-tea-details"
 
   import axios from 'axios'
@@ -33,7 +37,8 @@
       'logo-and-search-component': LogoAndSearchComponent,
       'category-list': CategoryList,
       'banner-component': BannerComponent,
-      'classified-display-cabinet': ClassifiedDisplayCabinet
+      'classified-display-cabinet': ClassifiedDisplayCabinet,
+      'four-small-banners': FourSmallBanners
     },
     data(){
       return {

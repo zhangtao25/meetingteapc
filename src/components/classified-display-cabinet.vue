@@ -83,8 +83,14 @@
   .classified-display-cabinet>.margin>.box-bd>.box-bd-r>li>.figure{width: 150px;height: 150px;background-color: #8c939d}
 </style>
 <template>
+
   <div class="classified-display-cabinet">
-    <div class="margin">
+    <div class="margin" style="overflow: hidden">
+      <!--box-banner-->
+      <img
+        width="1226"
+        style="display: block;margin: 42px 0 42px 0;"
+        :src="url+commodityDisplayCabinetPoster[2]" alt="" class="box-banner">
       <!--box-hd-->
       <div class="box-hd">
         <h2 style="line-height: 58px">{{largeclass}}</h2>
@@ -147,10 +153,8 @@
     props:["teaDetails","largeclass","navSmallclasses","comment","commodityDisplayCabinetPoster"],
     computed:{
       teaDetailsHandle(){
-
         if (this.langCode == "zh"){
           let teaDetailsHandleArr = []
-          console.log(123,this.teaDetails)
           for(let i=0;i<this.teaDetails.length;i++){
             teaDetailsHandleArr.push({
               "largeclass": this.teaDetails[i].zh_largeclass,
@@ -164,7 +168,6 @@
               "figureImg":this.teaDetails[i].figureImg
             })
           }
-          console.log(456)
           return teaDetailsHandleArr
         } else {
           let teaDetailsHandleArr = []

@@ -63,7 +63,7 @@
             v-for="(virtualData,index) of virtualDatas"
             :key="index"
             v-if="virtualLargeclass==virtualData.largeclass">
-            <img src="/static/smallclass-img/green-tea-Longjin.jpg" alt="">
+            <img src="/static/smallclass-img/GreenTea-Longjing.jpg" alt="">
             <span>{{virtualData.smallclass}}</span>
           </li>
         </ul>
