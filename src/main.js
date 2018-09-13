@@ -50,15 +50,7 @@ Vue.use(ElementUI, {
 
 
 // Configuring different environment data request paths
-const urlDev = 'http://localhost:3030'
-const urlQa = 'http://101.132.46.146:3030'
-let dataReqUrl = ''
-if(process.env.NODE_ENV == 'development'){
-  dataReqUrl=urlDev
-}else {
-  dataReqUrl=urlQa
-}
-Vue.prototype.dataReqUrl = dataReqUrl
+Vue.prototype.dataInterface = process.env.API_ROOT
 
 Vue.config.productionTip = false
 

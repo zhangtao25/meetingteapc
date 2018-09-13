@@ -190,6 +190,8 @@
       ...mapGetters(["langCode"])
     },
     mounted(){
+
+      console.log(this.dataInterface)
     }
   }
 </script>

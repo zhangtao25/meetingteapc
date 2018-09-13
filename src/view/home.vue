@@ -28,6 +28,7 @@
   import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
   import FourSmallBanners from "./../components/four-small-banners"
   import AllTeaDetails from "../service/all-tea-details"
+  import GoodsDbOperation from "../service/goods-db-operation"
 
   import axios from 'axios'
 
@@ -55,7 +56,6 @@
           "en_saleoff":"",
           "price":"",
           "nodiscountprice":"",
-          "comprehensive":""
         }),
         navSmallclasses:["热门","龙井","碧螺春","康师傅"],
         comment:Array(8).fill({
@@ -66,10 +66,12 @@
     },
     mounted(){
       let _this = this;
-      AllTeaDetails.getAllTeaDetails(this)
-        .then(res=>{
-          _this.testTeaDetails=res
-        })
+      // AllTeaDetails.getAllTeaDetails(this)
+      //   .then(res=>{
+      //     _this.testTeaDetails=res
+      //   })
+
+      GoodsDbOperation.GetGoods(_this.dataInterface).then(res => {console.log(res)})
     }
   }
 </script>
