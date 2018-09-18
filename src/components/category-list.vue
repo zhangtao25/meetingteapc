@@ -44,10 +44,10 @@
     @mouseleave="closeAllActiveLargeclass">
       <ul class="ul-li_a">
         <li
-          v-for="(virtualLargeclass,index) of virtualLargeclasses" :key="index"
+          v-for="(largeclass,index) of largeclasses" :key="index"
           @mousemove="triggerActiveLargeclass(index)"
           :style="{'background-color': activeLargeColor[index],'display':'flex'}">
-          <span style="display: block;width: 170px">{{virtualLargeclass}}</span>
+          <span style="display: block;width: 170px">{{$t(largeclass)}}</span>
           <i class="iconfont icon-right" style="font-size: 18px"></i>
         </li>
       </ul>
@@ -55,16 +55,16 @@
         <ul
           class="ul-li_a"
           :style="{'width':activeLargeclassWidth[index]}"
-          v-for="(virtualLargeclass,index) of virtualLargeclasses"
+          v-for="(largeclass,index) of largeclasses"
           :key="index"
           v-show="activeLargeclass[index]"
           @mouseleave="closeAllActiveLargeclass">
           <li
             v-for="(virtualData,index) of virtualDatas"
             :key="index"
-            v-if="virtualLargeclass==virtualData.largeclass">
+            v-if="largeclass==virtualData.class_id.slice(0,2)">
             <img src="/static/smallclass-img/GreenTea-Longjing.jpg" alt="">
-            <span>{{virtualData.smallclass}}</span>
+            <span>{{$t(virtualData.class_id)}}</span>
           </li>
         </ul>
       </div>
@@ -74,17 +74,12 @@
 <script>
   import axios from 'axios'
   import {mapGetters} from 'vuex'
-  import AllTypesOfTea from './../service/all-types-of-tea'
+
+  import GetGoodsInfor from './../service/get-goods-infor'
   export default {
     data(){
       return{
-        virtualLargeclasses:[
-          this.$t("bohea"),this.$t("green.tea"),
-          this.$t("white.tea"),this.$t("black.tea"),
-          this.$t("oolong"),this.$t("scented.tea"),
-          this.$t("yellow.tea"),this.$t("medicinal.tea"),
-          this.$t("tea.set"),this.$t("other"),
-        ],
+        largeclasses: ["00","01","02","03","04","05","06","07","08","09"],
         virtualDatas:[],
         activeLargeclass: Array(10).fill(false),
         activeLargeColor:Array(10).fill('rgba(0, 0, 0, 0)')
@@ -92,9 +87,10 @@
     },
     mounted(){
       let _this = this
-      AllTypesOfTea.getAllTypesOfTea(this)
+      GetGoodsInfor.GetAllTypesOfTea(this)
         .then(res=>{
           _this.virtualDatas = res
+          console.log(_this.virtualDatas)
         })
     },
     methods:{
@@ -113,25 +109,25 @@
       activeLargeclassWidth(){
         let datashuliang = Array(10).fill(0)
         for(let i in this.virtualDatas){
-          if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[0]){
+          if(this.virtualDatas[i]['class_id'].slice(0,2) == "00"){
             datashuliang[0]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[1]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "01"){
             datashuliang[1]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[2]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "02"){
             datashuliang[2]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[3]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "03"){
             datashuliang[3]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[4]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "04"){
             datashuliang[4]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[5]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "05"){
             datashuliang[5]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[6]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "06"){
             datashuliang[6]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[7]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "07"){
             datashuliang[7]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[8]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "08"){
             datashuliang[8]++
-          }else if(this.virtualDatas[i]['largeclass'] == this.virtualLargeclasses[9]){
+          }else if(this.virtualDatas[i]['class_id'].slice(0,2) == "09"){
             datashuliang[9]++
           }else{}
         }

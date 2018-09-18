@@ -8,5 +8,6 @@
   "header.component.about": "About Meeting Tea",
   "header.component.cart": "Shopping Cart",
   "category.list.all.product.categories": "All Product Categories",
-  "classified.display.cabinet.from": "from {name} comment"
+  "classified.display.cabinet.from": "from {name} comment",
+  "classified.display.cabinet.more.link": "View More"
 }

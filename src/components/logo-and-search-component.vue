@@ -34,10 +34,10 @@
           <input type="button" ref="searchBtn" class="searchBtn" @mouseover="btnMouseover()" @mouseleave="btnMouseleave()">
         </form>
         <ul class="ul-li_a">
-          <li>{{$t("white.tea")}}</li>
-          <li>{{$t("black.tea")}}</li>
-          <li>{{$t("yellow.tea")}}</li>
-          <li>{{$t("oolong")}}</li>
+          <li>{{$t("00")}}</li>
+          <li>{{$t("01")}}</li>
+          <li>{{$t("02")}}</li>
+          <li>{{$t("03")}}</li>
         </ul>
       </div>
       <div></div>

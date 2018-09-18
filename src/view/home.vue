@@ -7,13 +7,11 @@
     <four-small-banners></four-small-banners>
     <classified-display-cabinet
       :tea-details="testTeaDetails"
-      :largeclass="'绿茶'"
-      :nav-smallclasses="navSmallclasses"
       :comment="comment"
       :commodityDisplayCabinetPoster="[
-      '/images/commodityDisplayCabinetPoster/GreenTea/0.jpg',
-      '/images/commodityDisplayCabinetPoster/GreenTea/1.jpg',
-      '/images/commodityDisplayCabinetPoster/GreenTea/2.jpg'
+      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea0.jpg',
+      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea1.jpg',
+      ':8080/elfinder/files/images/commodityDisplayCabinetPoster/greentea_banner.jpg'
       ]"
     >
     </classified-display-cabinet>
@@ -27,9 +25,7 @@
   import BannerComponent from "./../components/banner-component"
   import ClassifiedDisplayCabinet from "./../components/classified-display-cabinet"
   import FourSmallBanners from "./../components/four-small-banners"
-  import AllTeaDetails from "../service/all-tea-details"
-  import GoodsDbOperation from "../service/goods-db-operation"
-
+  import GetGoodsInfor from "../service/get-goods-infor"
   import axios from 'axios'
 
   export default {
@@ -43,21 +39,7 @@
     },
     data(){
       return {
-        testTeaDetails:Array(8).fill({
-          "zh_largeclass": "",
-          "zh_smallclass":"",
-          "zh_title":"",
-          "zh_desc":"",
-          "zh_saleoff":"",
-          "en_largeclass": "",
-          "en_smallclass":"",
-          "en_title":"",
-          "en_desc":"",
-          "en_saleoff":"",
-          "price":"",
-          "nodiscountprice":"",
-        }),
-        navSmallclasses:["热门","龙井","碧螺春","康师傅"],
+        testTeaDetails:this.init(),
         comment:Array(8).fill({
           review:"很好",
           author:"张涛"
@@ -65,13 +47,41 @@
       }
     },
     mounted(){
-      let _this = this;
-      // AllTeaDetails.getAllTeaDetails(this)
-      //   .then(res=>{
-      //     _this.testTeaDetails=res
-      //   })
-
-      GoodsDbOperation.GetGoods(_this.dataInterface).then(res => {console.log(res)})
+      this.init()
+      GetGoodsInfor.GetEightHotGoods(this.dataInterface).then(res => {
+        for (let i=0;i<8;i++){
+          this.testTeaDetails[i].zh_title = res[i].zh_title
+          this.testTeaDetails[i].zh_desc = res[i].zh_desc
+          this.testTeaDetails[i].en_title = res[i].en_title
+          this.testTeaDetails[i].en_desc = res[i].en_desc
+          this.testTeaDetails[i].saleoff = res[i].saleoff
+          this.testTeaDetails[i].figure_img = res[i].figure_img
+          this.testTeaDetails[i].price = res[i].price
+          this.testTeaDetails[i].no_discount_price = res[i].no_discount_price
+        }
+      })
+    },
+    methods:{
+      init(){
+        let testTeaDetails = []
+        for (let i=0;i<8;i++){
+          testTeaDetails.push({
+            "zh_largeclass": "",
+            "zh_smallclass":"",
+            "zh_title":"",
+            "zh_desc":"",
+            "saleoff":"",
+            "en_largeclass": "",
+            "en_smallclass":"",
+            "en_title":"",
+            "en_desc":"",
+            "price":"",
+            "nodiscountprice":"",
+            "figure_img":""
+          })
+        }
+        return testTeaDetails
+      }
     }
   }
 </script>

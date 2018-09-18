@@ -1,17 +1,31 @@
 [
-  {"zh_largeclass": "红茶",
-    "zh_smallclass":"祁红",
-    "en_largeclass": "Bohea",
-    "en_smallclass":"keemun",
-    "figureImg":"/static/smallclass-img/green-tea-Lonjin.jpg"
-  },
-  {"zh_largeclass": "绿茶","zh_smallclass":"龙井茶","en_largeclass": "Green Tea","en_smallclass":"Longjing"},
-  {"zh_largeclass": "白茶","zh_smallclass":"白牡丹","en_largeclass": "White Tea","en_smallclass":"White Peony"},
-  {"zh_largeclass": "黑茶","zh_smallclass":"安化黑茶","en_largeclass": "Black Tea","en_smallclass":"Anhua Black Tea"},
-  {"zh_largeclass": "乌龙茶","zh_smallclass":"安溪铁观音","en_largeclass": "Oolong","en_smallclass":"Anxi Tieguanyin Tea"},
-  {"zh_largeclass": "花茶","zh_smallclass":"玫瑰花茶","en_largeclass": "Scented Tea","en_smallclass":"Rose Tea"},
-  {"zh_largeclass": "黄茶","zh_smallclass":"海马宫茶","en_largeclass": "Yellow Tea","en_smallclass":"Hippocampal Tea"},
-  {"zh_largeclass": "药茶","zh_smallclass":"降压茶","en_largeclass": "Medicinal Tea","en_smallclass":"Step-down Tea"},
-  {"zh_largeclass": "茶具","zh_smallclass":"紫砂茶具","en_largeclass": "Tea Set","en_smallclass":"Purple Clay Tea Set"},
-  {"zh_largeclass": "其它","zh_smallclass":"茶道配件","en_largeclass": "Other","en_smallclass":"Tea Way Accessories"}
+  {"largeclass": "红茶","smallclass":"祁红","class_id":"0000"},
+  {"largeclass": "红茶","smallclass":"昭平红","class_id":"0001"},
+
+  {"largeclass": "绿茶","smallclass":"龙井茶","class_id":"0100"},
+  {"largeclass": "绿茶","smallclass":"碧螺春茶","class_id":"0101"},
+
+  {"largeclass": "白茶","smallclass":"白牡丹","class_id":"0200"},
+  {"largeclass": "白茶","smallclass":"贡眉","class_id":"0201"},
+
+  {"largeclass": "黑茶","smallclass":"三尖","class_id":"0300"},
+  {"largeclass": "黑茶","smallclass":"茯砖","class_id":"0301"},
+
+  {"largeclass": "乌龙茶","smallclass":"安溪铁观音","class_id":"0400"},
+  {"largeclass": "乌龙茶","smallclass":"凤凰水仙","class_id":"0401"},
+
+  {"largeclass": "花茶","smallclass":"玫瑰花茶","class_id":"0500"},
+  {"largeclass": "花茶","smallclass":"杜仲花草茶","class_id":"0501"},
+
+  {"largeclass": "黄茶","smallclass":"海马宫茶","class_id":"0600"},
+  {"largeclass": "黄茶","smallclass":"海马宫茶","class_id":"0601"},
+
+  {"largeclass": "药茶","smallclass":"降压茶","class_id":"0700"},
+  {"largeclass": "药茶","smallclass":"清眩茶","class_id":"0701"},
+
+  {"largeclass": "茶具","smallclass":"茶坞","class_id":"0800"},
+  {"largeclass": "茶具","smallclass":"茶人","class_id":"0801"},
+
+  {"largeclass": "其它","smallclass":"其它0","class_id":"0900"},
+  {"largeclass": "其它","smallclass":"其它1","class_id":"0901"}
 ]
